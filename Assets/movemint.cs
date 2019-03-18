@@ -17,27 +17,38 @@ public class movemint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-            player.SetFloat("speed", 10);
         if (Input.GetKey(KeyCode.UpArrow))
+        {
             transform.position =
                 new Vector3(transform.position.x,
                 transform.position.y,
                 transform.position.z + 5 * Time.deltaTime);
+                player.SetFloat("speed", 10);
+            }
         if (Input.GetKey(KeyCode.DownArrow))
+        { 
             transform.position =
                 new Vector3(transform.position.x,
                 transform.position.y,
                 transform.position.z - 5 * Time.deltaTime);
+            player.SetFloat("speed", 10);
+        }
         if (Input.GetKey(KeyCode.RightArrow))
+        { 
             transform.position =
                 new Vector3(transform.position.x + 5 * Time.deltaTime,
                 transform.position.y,
                 transform.position.z);
+            player.SetFloat("speed", 10);
+        }
+
         if (Input.GetKey(KeyCode.LeftArrow))
+        { 
             transform.position =
                 new Vector3(transform.position.x - 5 * Time.deltaTime,
                 transform.position.y,
                 transform.position.z);
+            player.SetFloat("speed", 10);
+        }
     }
 }
