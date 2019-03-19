@@ -8,7 +8,7 @@ public class PlaneMovment : MonoBehaviour
     public Transform planPosition;
     public GameObject Coins;
     int randNum;
-    public float time=5;
+    public float time=28;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,13 @@ public class PlaneMovment : MonoBehaviour
             Destroy(gameObject);
         }
     }
+   
     private void OnTriggerEnter(Collider other)
     {
+        //if (other.tag=="Lose")
+        //{
+        //    print("loseeeeee");
+        //}
         if (other.gameObject.tag == "Player")
         {
             Instantiate(plane, planPosition.position, transform.rotation);

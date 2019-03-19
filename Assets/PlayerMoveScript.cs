@@ -22,6 +22,7 @@ public class PlayerMoveScript : MonoBehaviour
     {
 
         GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, 4);
+
         if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum>1) && (controlLocked == "n"))
         {
             horizVel = -2;
@@ -44,7 +45,13 @@ public class PlayerMoveScript : MonoBehaviour
         horizVel = 0;
         controlLocked = "n";
     }
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Lose")
+        {
+            print("loseeeeee");
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Coin")
