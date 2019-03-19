@@ -8,11 +8,15 @@ public class PlaneMovment : MonoBehaviour
     public Transform planPosition;
     public GameObject Coins;
     int randNum;
-<<<<<<< HEAD
+
+//<<<<<<< HEAD
     public float time=5;
-=======
-    public float time=28;
->>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
+//=======
+   // public float time=28;
+//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
+//=======
+//    public float time=28;
+//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
 
     // Start is called before the first frame update
     void Start()
