@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
-    float time = 28;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +14,5 @@ public class Coin : MonoBehaviour
     void Update()
     {
         transform.Rotate(0, 4, 0);
-        time -= Time.deltaTime;
-        if (time < 0)
-        {
-            Destroy(gameObject);
-        }
     }
 }

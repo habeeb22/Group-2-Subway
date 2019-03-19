@@ -366,5 +366,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 991482160031741136, guid: c3239d1407d94f849b727de5b525cccb, type: 3}
   planPosition: {fileID: 1869509008158457065}
-  Coins: {fileID: 9077849828760810957, guid: e4a563574e6c9384095604180c8fa346, type: 3}
   time: 25
