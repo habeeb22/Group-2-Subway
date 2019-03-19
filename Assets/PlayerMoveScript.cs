@@ -22,14 +22,10 @@ public class PlayerMoveScript : MonoBehaviour
     {
 
         GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, 4);
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
+<<<<<<< HEAD
+=======
 
-//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
-//=======
-
-//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
+>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
         if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum>1) && (controlLocked == "n"))
         {
             horizVel = -2;
@@ -51,11 +47,8 @@ public class PlayerMoveScript : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         horizVel = 0;
         controlLocked = "n";
-//<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-//=======
-//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
+<<<<<<< HEAD
+=======
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -63,10 +56,7 @@ public class PlayerMoveScript : MonoBehaviour
         {
             print("loseeeeee");
         }
-//<<<<<<< HEAD
-//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
-//=======
-//>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
+>>>>>>> 5f2a7f791a59aa8def60e5b72d6045b49c460fd0
     }
     private void OnTriggerEnter(Collider other)
     {
