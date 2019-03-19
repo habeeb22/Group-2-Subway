@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class PlayerMoveScript : MonoBehaviour
 {
-    public KeyCode moveL;
-    public KeyCode moveR;
     public float horizVel = 0;
     public int lamNum = 2;
     public string controlLocked = "n";
     public GameObject plane;
     Rigidbody RB;
-
+    public float jumpspeed = 5;
+    bool onground = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +18,25 @@ public class PlayerMoveScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
-        GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, 4);
-        if (Input.GetKeyDown("space"))
+
+        RB.velocity = new Vector3(horizVel, 0, 4);
+
+        if (Input.GetKeyDown(KeyCode.Space) && onground)
         {
-            RB.AddForce(Vector3.up * 50, ForceMode.Impulse);
+            RB.AddForce(Vector3.up * jumpspeed, ForceMode.Impulse);
+            onground = false;
         }
-        if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum>1) && (controlLocked == "n"))
+        else if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum > 1) && (controlLocked == "n"))
         {
             horizVel = -2;
             StartCoroutine(stopSlide());
             lamNum -= 1;
             controlLocked = "y";
         }
-        if ((Input.GetKeyDown(KeyCode.RightArrow)) && (lamNum < 3) && (controlLocked == "n"))
+        else if ((Input.GetKeyDown(KeyCode.RightArrow)) && (lamNum < 3) && (controlLocked == "n"))
         {
             horizVel = 2;
             StartCoroutine(stopSlide());
@@ -43,6 +45,7 @@ public class PlayerMoveScript : MonoBehaviour
         }
 
     }
+
     IEnumerator stopSlide()
     {
         yield return new WaitForSeconds(.5f);
@@ -57,5 +60,12 @@ public class PlayerMoveScript : MonoBehaviour
             //GameManager.coin += 1;
             Destroy(other.gameObject);
         }
+
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Ground")
+            onground = true;
     }
 }
