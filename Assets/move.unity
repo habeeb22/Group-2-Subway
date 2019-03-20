@@ -335,7 +335,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 07c4ef91a6ad63442ba51d1f34fe16be, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -180.26
       objectReference: {fileID: 0}
     - target: {fileID: 400122, guid: 07c4ef91a6ad63442ba51d1f34fe16be, type: 3}
       propertyPath: m_LocalRotation.x
@@ -587,11 +587,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38472f3dfb66494b9fc338cbbde599b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizVel: 0
-  lamNum: 2
-  controlLocked: n
-  plane: {fileID: 0}
-  jumpspeed: 50
+  jump: {x: 0, y: 0, z: 0}
+  jumpForce: 2
+  speed: 10
+  isGrounded: 0
 --- !u!136 &2136679701
 CapsuleCollider:
   m_ObjectHideFlags: 0

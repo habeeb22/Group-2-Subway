@@ -4,68 +4,47 @@ using UnityEngine;
 
 public class PlayerMoveScript : MonoBehaviour
 {
-    public float horizVel = 0;
-    public int lamNum = 2;
-    public string controlLocked = "n";
-    public GameObject plane;
-    Rigidbody RB;
-    public float jumpspeed = 5;
-    bool onground = true;
+    public Vector3 jump;
+    public float jumpForce = 2.0f;
+    public float speed = 10;
+
+    public bool isGrounded;
+    Rigidbody rb;
+    int limit = 0;
+    bool canMove;
     // Start is called before the first frame update
     void Start()
     {
-        RB = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        jump = new Vector3(0.0f, 3.0f, 0.0f);
     }
 
-    // Update is called once per frame
+    void OnCollisionStay()
+    {
+        isGrounded = true;
+    }
+
     void FixedUpdate()
     {
+        float moveHorizontal = Input.GetAxis("Horizontal");
 
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            transform.position = new Vector3(1.3f, 0, 0);
 
-        RB.velocity = new Vector3(horizVel, 0, 4);
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            transform.position = new Vector3(-1.3f, 0, 0);
 
-        if (Input.GetKeyDown(KeyCode.Space) && onground)
+        if (Input.GetKey(KeyCode.UpArrow))
+            transform.position = new Vector3(0, 0, transform.position.z + 2f);
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            RB.AddForce(Vector3.up * jumpspeed, ForceMode.Impulse);
-            onground = false;
+
+            rb.AddForce(jump * jumpForce, ForceMode.Impulse);
+            isGrounded = false;
         }
-        else if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum > 1) && (controlLocked == "n"))
-        {
-            horizVel = -2;
-            StartCoroutine(stopSlide());
-            lamNum -= 1;
-            controlLocked = "y";
-        }
-        else if ((Input.GetKeyDown(KeyCode.RightArrow)) && (lamNum < 3) && (controlLocked == "n"))
-        {
-            horizVel = 2;
-            StartCoroutine(stopSlide());
-            lamNum += 1;
-            controlLocked = "y";
-        }
+        //else
+            //transform.position = new Vector3(transform.position.x, transform.position.y, 0*Time.deltaTime);
 
-    }
-
-    IEnumerator stopSlide()
-    {
-        yield return new WaitForSeconds(.5f);
-        horizVel = 0;
-        controlLocked = "n";
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Coin")
-        {
-            //GameManager.coin += 1;
-            Destroy(other.gameObject);
-        }
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Ground")
-            onground = true;
     }
 }
