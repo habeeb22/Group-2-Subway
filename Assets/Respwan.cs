@@ -31,7 +31,7 @@ public class Respwan : MonoBehaviour
         time -= Time.deltaTime;
         if (time <=0)
         {
-            time = 0.4f;
+            time = 0.3f;
            // Instantiate(wall1, respwanL.position, transform.rotation);
             randNumW = Random.Range(0, 11);
             if (randNumW <3)
