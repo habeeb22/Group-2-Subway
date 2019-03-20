@@ -6,7 +6,7 @@ public class PlayerMoveScript2 : MonoBehaviour
 {
     public Vector3 jump;
     public float jumpForce = 2.0f;
-    public float speed = 10;
+    public float speed = 0.1f;
     public bool isGrounded;
     Rigidbody rb;
     int currentLocation = 1;
@@ -42,13 +42,28 @@ public class PlayerMoveScript2 : MonoBehaviour
             transform.position = new Vector3(xLocations[currentLocation], transform.position.y, transform.position.z);
         }
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
 
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Lose")
+        {
+            print("loseeeeee");
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Coin")
+        {
+            GameManager.coin += 1;
+            Destroy(other.gameObject);
         }
     }
 }
