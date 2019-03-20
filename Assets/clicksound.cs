@@ -9,6 +9,9 @@ public class clicksound : MonoBehaviour
 
     public AudioClip sound;
     private Button button { get { return GetComponent<Button>(); } }
+    private AudioSource source { get { return GetComponent<AudioSource>(); } }
+    // Start is called before the first frame update
+    void Start()
     {
         gameObject.AddComponent<AudioSource>();
         source.clip = sound;
