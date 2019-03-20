@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMoveScript2 : MonoBehaviour
 {
+    public int ScoreSpeed;
+    public Text scoreS;
     public Vector3 jump;
     public float jumpForce = 2.0f;
     public float speed = 0.1f;
+    public float moveSpeed;
     public bool isGrounded;
     Rigidbody rb;
     int currentLocation = 1;
@@ -27,6 +31,20 @@ public class PlayerMoveScript2 : MonoBehaviour
 
     void FixedUpdate()
     {
+        scoreS.text = "score: " + ScoreSpeed;
+        ScoreSpeed += 1;
+        if (ScoreSpeed >1000 && ScoreSpeed<5000)
+        {
+            moveSpeed = .13f;
+        }
+        if (ScoreSpeed > 5000 && ScoreSpeed < 9000)
+        {
+            moveSpeed = 0.15f;
+        }
+        if (ScoreSpeed > 9000)
+        {
+            moveSpeed = 0.2f;
+        }
         float moveHorizontal = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -42,7 +60,7 @@ public class PlayerMoveScript2 : MonoBehaviour
             transform.position = new Vector3(xLocations[currentLocation], transform.position.y, transform.position.z);
         }
 
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 0.1f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + moveSpeed);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
