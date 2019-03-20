@@ -7,6 +7,7 @@ TagManager:
   - Coin
   - Emission
   - Lose
+  - Finished
   layers:
   - Default
   - TransparentFX
