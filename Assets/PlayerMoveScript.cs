@@ -7,11 +7,12 @@ public class PlayerMoveScript : MonoBehaviour
     public Vector3 jump;
     public float jumpForce = 2.0f;
     public float speed = 10;
-
     public bool isGrounded;
     Rigidbody rb;
-    int limit = 0;
+    int currentLocation = 1;
     bool canMove;
+    float[] xLocations = { -1.3f, 0, 1.3f };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +30,19 @@ public class PlayerMoveScript : MonoBehaviour
         float moveHorizontal = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            transform.position = new Vector3(1.3f, 0, 0);
-
+        {
+            if (currentLocation < 2)
+                currentLocation++;
+            transform.position = new Vector3(xLocations[currentLocation], transform.position.y, transform.position.z);
+        }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
-            transform.position = new Vector3(-1.3f, 0, 0);
+        {
+            if (currentLocation > 0)
+                currentLocation--;
+            transform.position = new Vector3(xLocations[currentLocation], transform.position.y, transform.position.z);
+        }
 
-        if (Input.GetKey(KeyCode.UpArrow))
-            transform.position = new Vector3(0, 0, transform.position.z + 2f);
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2f);
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -43,8 +50,5 @@ public class PlayerMoveScript : MonoBehaviour
             rb.AddForce(jump * jumpForce, ForceMode.Impulse);
             isGrounded = false;
         }
-        //else
-            //transform.position = new Vector3(transform.position.x, transform.position.y, 0*Time.deltaTime);
-
     }
 }
