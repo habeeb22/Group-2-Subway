@@ -1376,8 +1376,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 2001524871}
+  scoreTextG: {fileID: 8180189879550549380, guid: ba25c24086174154db93277731a848d1,
+    type: 3}
+  bestscoreText: {fileID: 2246520583106410835, guid: 10ecd8226cd09814e8418b3c877ee917,
+    type: 3}
   score: 0
   coinText: {fileID: 21423675}
+  coinTextG: {fileID: 561254613349842392, guid: 6a088e34d4518fb47b96c4926a01874a,
+    type: 3}
+  bestscore: 0
 --- !u!4 &1812862152
 Transform:
   m_ObjectHideFlags: 0

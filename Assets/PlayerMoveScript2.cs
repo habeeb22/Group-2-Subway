@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMoveScript2 : MonoBehaviour
@@ -69,11 +70,17 @@ public class PlayerMoveScript2 : MonoBehaviour
             isGrounded = false;
         }
     }
+
+   
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Lose")
         {
-            print("loseeeeee");
+
+            SceneManager.LoadScene("GameOver");
+
+
         }
     }
     private void OnTriggerEnter(Collider other)

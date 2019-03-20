@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+
+public class GameManager1 : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager1 Instance;
     public Text scoreText;
     public Text scoreTextG;
     public Text bestscoreText;
@@ -58,13 +59,13 @@ public class GameManager : MonoBehaviour
 
 
 
-        if (PlayerPrefs.GetInt("Player") < score)
+        if ( PlayerPrefs.GetInt("Player") < score )
 
         {
             bestscore = score;
             bestscoreText.text = "BestScore: " + score;
-            PlayerPrefs.SetInt("Player", score);
-        }
+            PlayerPrefs.SetInt("Player",score);
+ }
         else
             bestscoreText.text = "BestScore: " + PlayerPrefs.GetInt("Player");
     }
