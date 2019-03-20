@@ -103,9 +103,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8696786390391014311}
   - component: {fileID: 5344759362056412171}
+  - component: {fileID: 8671348956464663391}
   m_Layer: 0
-  m_Name: Detail_03
-  m_TagString: Untagged
+  m_Name: Wall2
+  m_TagString: Lose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,6 +151,18 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5993008502075142424}
   m_Enabled: 1
+--- !u!114 &8671348956464663391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266838830219048168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2e37aaadcaae147a7b1037b79030f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8480332222148559846
 GameObject:
   m_ObjectHideFlags: 0
