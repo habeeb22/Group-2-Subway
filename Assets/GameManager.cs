@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+     GameObject enterrnameeee;
+    public Text scoreName;
+    public InputField enterName;
     public static GameManager Instance;
     public Text scoreText;
     public Text scoreTextG;
@@ -19,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        //enterrnameeee = GameObject.FindGameObjectWithTag("InputField").gameObject;
         if (Instance == null)
             Instance = this;
         else
@@ -29,6 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         print(PlayerPrefs.GetInt("Player"));
         score = 0;
         coin = 0;
@@ -42,7 +47,7 @@ public class GameManager : MonoBehaviour
         //GameObject.FindGameObjectWithTag("GameStarted").GameStart();
         //if (start == true)
         //{
-        score += 1;
+        score += 50;
         //PlayerPrefs.SetInt("player", score);
 
         //}
@@ -56,19 +61,26 @@ public class GameManager : MonoBehaviour
         coinTextG.text = "Coin: " + coin;
 
 
-
+        //if (PlayerPrefs.GetInt("Player") > score)
+        //{
+        //    enterName.enabled = false;
+        //}
 
         if (PlayerPrefs.GetInt("Player") < score)
 
         {
+            
             bestscore = score;
             bestscoreText.text = "BestScore: " + score;
             PlayerPrefs.SetInt("Player", score);
+            //enterrnameeee.SetActive(true);
         }
         else
             bestscoreText.text = "BestScore: " + PlayerPrefs.GetInt("Player");
-    }
+        enterName.enabled = false;
 
+    }
+   
     //public void GameStart()
     //{
     //    start = true;

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Finished
   - Emission
+  - Coin
+  - Lose
+  - InputField
   layers:
   - Default
   - TransparentFX

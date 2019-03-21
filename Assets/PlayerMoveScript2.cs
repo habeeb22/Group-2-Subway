@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerMoveScript2 : MonoBehaviour
 {
+    Animator Action1;
     public int ScoreSpeed;
     public Text scoreS;
     public Vector3 jump;
@@ -16,11 +17,13 @@ public class PlayerMoveScript2 : MonoBehaviour
     Rigidbody rb;
     int currentLocation = 1;
     bool canMove;
-    float[] xLocations = { -1.3f, 0, 1.3f };
+    float[] xLocations = { -1f, 0, 1f };
+    public AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
     {
+        Action1 = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         jump = new Vector3(0.0f, 3.0f, 0.0f);
     }
@@ -32,6 +35,10 @@ public class PlayerMoveScript2 : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Action1.SetTrigger("Action");
+        }
         scoreS.text = "score: " + ScoreSpeed;
         ScoreSpeed += 1;
         if (ScoreSpeed >1000 && ScoreSpeed<5000)
@@ -87,8 +94,10 @@ public class PlayerMoveScript2 : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
+           
             GameManager.coin += 1;
             Destroy(other.gameObject);
+            AudioSource.PlayClipAtPoint(clip, transform.position);
         }
     }
 }

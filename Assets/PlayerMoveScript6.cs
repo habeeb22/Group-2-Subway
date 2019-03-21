@@ -11,18 +11,18 @@ public class PlayerMoveScript6 : MonoBehaviour
     public int lamNum = 2;
     public string controlLocked = "n";
     public GameObject plane;
-  
+    public AudioClip clip;
 
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
         GetComponent<Rigidbody>().velocity = new Vector3(horizVel, 0, 4);
 
         if ((Input.GetKeyDown(KeyCode.LeftArrow)) && (lamNum>1) && (controlLocked == "n"))
@@ -66,6 +66,7 @@ public class PlayerMoveScript6 : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
+            AudioSource.PlayClipAtPoint(clip, transform.position);
             GameManager1.coin += 1;
             Destroy(other.gameObject);
         }

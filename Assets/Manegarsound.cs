@@ -8,10 +8,10 @@ public class Manegarsound : MonoBehaviour
     public Sprite audioOffSprite;
     public Sprite audioOnfSprite;
     public Image Soundimage;
-
+  
     public AudioSource musicAudioSource;
     public AudioSource soundEffectsAudioSource;
-
+    public static Manegarsound Instance;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +20,16 @@ public class Manegarsound : MonoBehaviour
     // Update is called once per frame
     void Update()
 
-    { }
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+        if (musicAudioSource.volume==1)
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
 
 
 
@@ -59,4 +68,5 @@ public class Manegarsound : MonoBehaviour
 
         }
     }
+   
 }
