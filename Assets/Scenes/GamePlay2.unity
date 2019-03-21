@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 21423675}
   m_Layer: 5
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: CoinGamPlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1586,16 +1586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0572fff5a65fb7843bfeef26d7c9333a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreName: {fileID: 5833990386687308317, guid: 151e17dd6fc6d6a48a5259d54a11594f,
-    type: 3}
-  enterName: {fileID: 810589983, guid: d7fb52efe216dae4c8d226d22ec75a9a, type: 3}
-  scoreText: {fileID: 2001524871}
   scoreTextG: {fileID: 8180189879550549380, guid: ba25c24086174154db93277731a848d1,
     type: 3}
   bestscoreText: {fileID: 2246520583106410835, guid: 10ecd8226cd09814e8418b3c877ee917,
     type: 3}
-  score: 0
-  coinText: {fileID: 21423675}
+  coinText: 
   coinTextG: {fileID: 561254613349842392, guid: 6a088e34d4518fb47b96c4926a01874a,
     type: 3}
   bestscore: 0
@@ -1785,7 +1780,7 @@ GameObject:
   - component: {fileID: 2001524871}
   m_Layer: 5
   m_Name: Score
-  m_TagString: Untagged
+  m_TagString: ScoreGamPlay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

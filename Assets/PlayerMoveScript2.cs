@@ -35,6 +35,7 @@ public class PlayerMoveScript2 : MonoBehaviour
 
     void FixedUpdate()
     {
+        GameManager.score += 1;
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Action1.SetTrigger("Action");

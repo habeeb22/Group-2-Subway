@@ -9,6 +9,10 @@ TagManager:
   - Coin
   - Lose
   - InputField
+  - CoinGamPlay
+  - ScoreGamPlay
+  - ScoreNameGameOver
+  - InputFieldGameOver
   layers:
   - Default
   - TransparentFX

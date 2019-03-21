@@ -2,52 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-     GameObject enterrnameeee;
-    public Text scoreName;
-    public InputField enterName;
+    
+     Text scoreName;
+     Text enterName;
     public static GameManager Instance;
-    public Text scoreText;
+    Text scoreText;
     public Text scoreTextG;
     public Text bestscoreText;
 
     bool start;
-    public int score;
+    public static int score;
     public static int coin;
-    public Text coinText;
+    public string coinText;
     public Text coinTextG;
     public float bestscore;
 
+    Text gamePlayCoinsText;
+
     void Awake()
     {
-        //enterrnameeee = GameObject.FindGameObjectWithTag("InputField").gameObject;
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
+        
+       
 
-        //DontDestroyOnLoad(gameObject);
+
+
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(this);
+        DontDestroyOnLoad(gameObject);
+        //print(PlayerPrefs.GetInt("Player1"));
         print(PlayerPrefs.GetInt("Player"));
         score = 0;
         coin = 0;
         scoreText.text = "score: " + 0;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
 
+        if (sceneName == "GamePlay2")
+        {
+            gamePlayCoinsText = GameObject.FindGameObjectWithTag("CoinGamPlay").GetComponent<Text>();
+            scoreText = GameObject.FindGameObjectWithTag("ScoreGamPlay").GetComponent<Text>();
+        }
+        else if (sceneName == "GameOver")
+        {
+            scoreName = GameObject.FindGameObjectWithTag("ScoreNameGameOver").GetComponent<Text>();
+            enterName = GameObject.FindGameObjectWithTag("InputFieldGameOver").GetComponent<Text>();
+            //scoreName.text = enterName.text;
+        }
+        
         //GameObject.FindGameObjectWithTag("GameStarted").GameStart();
         //if (start == true)
         //{
-        score += 50;
+        //score += 50;
         //PlayerPrefs.SetInt("player", score);
 
         //}
@@ -57,30 +78,46 @@ public class GameManager : MonoBehaviour
         scoreText.text = "score: " + score;
         scoreTextG.text = "score: " + score;
         bestscoreText.text = "BestScore: " + bestscore;
-        coinText.text = "Coin: " + coin;
+        //coinText = "Coin: " + coin;
         coinTextG.text = "Coin: " + coin;
+        //scoreName.text = enterName.text;
 
+        gamePlayCoinsText.text = "Coin: " + coin;
 
         //if (PlayerPrefs.GetInt("Player") > score)
         //{
         //    enterName.enabled = false;
         //}
-
-        if (PlayerPrefs.GetInt("Player") < score)
-
+        //PlayerPrefs.SetString("Player1", enterName.text.ToString());
+        //scoreName.text = PlayerPrefs.GetString("Player1");
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            
-            bestscore = score;
-            bestscoreText.text = "BestScore: " + score;
-            PlayerPrefs.SetInt("Player", score);
-            //enterrnameeee.SetActive(true);
+            if (PlayerPrefs.GetInt("Player") < score)
+
+            {
+
+                bestscore = score;
+                
+                PlayerPrefs.SetInt("Player", score);
+                bestscoreText.text = "BestScore: " + score;
+                scoreName.text = enterName.text;
+                //if (Input.GetKeyDown(KeyCode.Return))
+                //{
+                //PlayerPrefs.SetString("Player1", enterName.text);
+                //}
+
+            }
+            else
+            {
+                bestscoreText.text = "BestScore: " + PlayerPrefs.GetInt("Player");
+                // scoreName.text = PlayerPrefs.GetString("Player1");
+            }
         }
-        else
-            bestscoreText.text = "BestScore: " + PlayerPrefs.GetInt("Player");
-        enterName.enabled = false;
+        
+
 
     }
-   
+
     //public void GameStart()
     //{
     //    start = true;
