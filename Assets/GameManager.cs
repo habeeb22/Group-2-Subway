@@ -6,27 +6,33 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
-     Text scoreName;
-     Text enterName;
+    public HighscoreTable highadder;
+    Text manuCoin;
+    Text scoreName;
+    Text enterName;
+    Text mycoins;
+
     public static GameManager Instance;
     Text scoreText;
     public Text scoreTextG;
     public Text bestscoreText;
-
+    
     bool start;
     public static int score;
     public static int coin;
-    public string coinText;
+    
+    //public int  totalcoin1;
+    Text totalCoinGamplay;
+    //public string coinText;
     public Text coinTextG;
-    public float bestscore;
+    //public float bestscore;
 
     Text gamePlayCoinsText;
 
     void Awake()
     {
-        
-       
+
+        //PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + coin);
 
 
 
@@ -34,17 +40,18 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         if (Instance == null)
             Instance = this;
         else
             Destroy(this);
         DontDestroyOnLoad(gameObject);
         //print(PlayerPrefs.GetInt("Player1"));
-        print(PlayerPrefs.GetInt("Player"));
+        //print(PlayerPrefs.GetInt("Player"));
         score = 0;
         coin = 0;
-        scoreText.text = "score: " + 0;
-        
+       // scoreText.text = "score: " + 0;
+
     }
 
     // Update is called once per frame
@@ -53,18 +60,61 @@ public class GameManager : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        if (sceneName == "GamePlay2")
+        if (sceneName == "ManiManu")
+        {
+            manuCoin = GameObject.FindGameObjectWithTag("ManuCoins").GetComponent<Text>();
+            //scoreText = GameObject.FindGameObjectWithTag("ScoreGamPlay").GetComponent<Text>();
+            //totalCoinGamplay = GameObject.FindGameObjectWithTag("TotalCoinGamePlay").GetComponent<Text>();
+            //gamePlayCoinsText.text = "Coin: " + coin;
+            //scoreText.text = "score: " + score;
+            //totalcoin1 = totalCoin;
+
+            //PlayerPrefs.SetInt("Coins", totalCoin);
+            manuCoin.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+
+
+        }
+        else if (sceneName == "GamePlay2")
         {
             gamePlayCoinsText = GameObject.FindGameObjectWithTag("CoinGamPlay").GetComponent<Text>();
             scoreText = GameObject.FindGameObjectWithTag("ScoreGamPlay").GetComponent<Text>();
+            totalCoinGamplay = GameObject.FindGameObjectWithTag("TotalCoinGamePlay").GetComponent<Text>();
+            gamePlayCoinsText.text = "Coin: " + coin;
+            scoreText.text = "score: " + score;
+            //totalcoin1 = totalCoin;
+           
+            //PlayerPrefs.SetInt("Coins", totalCoin);
+            totalCoinGamplay.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+
+            
         }
         else if (sceneName == "GameOver")
         {
+            highadder = GameObject.FindGameObjectWithTag("AdderScores").GetComponent<HighscoreTable>();
+            //highadder.Addscores(score, name);
             scoreName = GameObject.FindGameObjectWithTag("ScoreNameGameOver").GetComponent<Text>();
-            enterName = GameObject.FindGameObjectWithTag("InputFieldGameOver").GetComponent<Text>();
+            //enterName = GameObject.FindGameObjectWithTag("InputFieldGameOver").GetComponent<Text>();
+            bestscoreText = GameObject.FindGameObjectWithTag("BestScore").GetComponent<Text>();
+            if (GameObject.FindGameObjectWithTag("EnterName") !=null)
+            {
+                enterName = GameObject.FindGameObjectWithTag("EnterName").GetComponent<Text>();
+            }
+           
+            
+            mycoins= GameObject.FindGameObjectWithTag("TotalCoins").GetComponent<Text>();
+            scoreName.text =  PlayerPrefs.GetString("Player1");
+            bestscoreText.text = "Your Score: " + PlayerPrefs.GetInt("Player");
+            mycoins.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+            // PlayerPrefs.GetInt("Coins", PlayerPrefs.GetInt("Coins")+ totalCoin);
             //scoreName.text = enterName.text;
+            //PlayerPrefs.GetInt("Coins", PlayerPrefs.GetInt("Coins") + coin);
+            //for (int i = 1; i <= coin; i++)
+            //{
+            //    PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
+            //}
+
         }
-        
+
         //GameObject.FindGameObjectWithTag("GameStarted").GameStart();
         //if (start == true)
         //{
@@ -74,45 +124,35 @@ public class GameManager : MonoBehaviour
         //}
 
         //GameObject.FindGameObjectWithTag(!"GameStarted").GameStop();
+        //PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + totalCoin);
 
-        scoreText.text = "score: " + score;
+
         scoreTextG.text = "score: " + score;
-        bestscoreText.text = "BestScore: " + bestscore;
+        //bestscoreText.text = "BestScore: " + bestscore;
         //coinText = "Coin: " + coin;
         coinTextG.text = "Coin: " + coin;
         //scoreName.text = enterName.text;
+        
 
-        gamePlayCoinsText.text = "Coin: " + coin;
 
         //if (PlayerPrefs.GetInt("Player") > score)
         //{
         //    enterName.enabled = false;
         //}
         //PlayerPrefs.SetString("Player1", enterName.text.ToString());
-        //scoreName.text = PlayerPrefs.GetString("Player1");
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (PlayerPrefs.GetInt("Player") < score)
+      
 
-            {
+        //if (Input.GetKeyDown(KeyCode.Return))
+        //{
+           
 
-                bestscore = score;
-                
-                PlayerPrefs.SetInt("Player", score);
-                bestscoreText.text = "BestScore: " + score;
-                scoreName.text = enterName.text;
-                //if (Input.GetKeyDown(KeyCode.Return))
-                //{
-                //PlayerPrefs.SetString("Player1", enterName.text);
-                //}
-
-            }
-            else
-            {
-                bestscoreText.text = "BestScore: " + PlayerPrefs.GetInt("Player");
-                // scoreName.text = PlayerPrefs.GetString("Player1");
-            }
-        }
+        //        highadder.Addscores(score, enterName.text);
+             
+        //        PlayerPrefs.SetInt("Player", score);
+            
+        //        PlayerPrefs.SetString("Player1", enterName.text);
+            
+        //}
         
 
 
@@ -128,4 +168,12 @@ public class GameManager : MonoBehaviour
     //    start = false;
     //    //score += 1;
     //}
+    public void SubmitScore()
+    {
+        highadder.Addscores(score, enterName.text);
+     
+        PlayerPrefs.SetInt("Player", score);
+       
+        PlayerPrefs.SetString("Player1", enterName.text);
+    }
 }

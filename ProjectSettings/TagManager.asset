@@ -13,6 +13,21 @@ TagManager:
   - ScoreGamPlay
   - ScoreNameGameOver
   - InputFieldGameOver
+  - BestScore
+  - EnterName
+  - TotalCoins
+  - TotalCoinGamePlay
+  - ButtonEnterName
+  - TotalCoinManu
+  - SoundImage
+  - highscoreEntryContainer
+  - highscoreEntryTemplate
+  - PosText
+  - ScoreText
+  - NameText
+  - AdderScores
+  - GameManager
+  - ManuCoins
   layers:
   - Default
   - TransparentFX

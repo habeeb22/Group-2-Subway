@@ -95,8 +95,9 @@ public class PlayerMoveScript2 : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
-           
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
             GameManager.coin += 1;
+            
             Destroy(other.gameObject);
             AudioSource.PlayClipAtPoint(clip, transform.position);
         }

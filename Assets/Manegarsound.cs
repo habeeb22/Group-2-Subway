@@ -15,20 +15,29 @@ public class Manegarsound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //if (musicAudioSource != null )
+        //{
+            
+        //   // musicAudioSource.Stop();
+        //}
+        if (Instance == null)
+            Instance = this;
+        else
+        {
+            musicAudioSource.Stop();
+            //PlayerPrefs.SetInt("Music", 0);
+            Destroy(this);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
     void Update()
 
     {
-        if (Instance == null)
-            Instance = this;
-        else
-            Destroy(this);
-        if (musicAudioSource.volume==1)
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+       
+        
     }
 
 
@@ -36,15 +45,18 @@ public class Manegarsound : MonoBehaviour
 
     public void ToggleMuteMusic()
     {
-        if (musicAudioSource.volume == 0)
+        if (PlayerPrefs.GetInt("Music", 0) == 0)
         {
             musicAudioSource.volume = 1;
             Soundimage.sprite = audioOnfSprite;
+            PlayerPrefs.SetInt("Music", 1);
         }
-        else if (musicAudioSource.volume == 1)
+        else 
         {
+            PlayerPrefs.SetInt("Music", 0);
             musicAudioSource.volume = 0;
-            Soundimage.sprite = audioOffSprite; 
+            Soundimage.sprite = audioOffSprite;
+           
         }
     }
 
@@ -56,15 +68,15 @@ public class Manegarsound : MonoBehaviour
     public void SoundCont()
     {
 
-        if  (soundEffectsAudioSource .volume == 0)
+        if  (PlayerPrefs.GetInt("Music", 0) == 0)
         {
 
-            soundEffectsAudioSource.volume = 1;
+            soundEffectsAudioSource.volume = 0;
 
         }
-        else if (soundEffectsAudioSource .volume == 1)
+        else 
         {
-            soundEffectsAudioSource.volume = 0;
+            soundEffectsAudioSource.volume = 1;
 
         }
     }
