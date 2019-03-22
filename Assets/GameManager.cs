@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
             //scoreText.text = "score: " + score;
             //totalcoin1 = totalCoin;
 
-            //PlayerPrefs.SetInt("Coins", totalCoin);
+            //PlayerPrefs.SetInt("Coins", totalCo
+            
             manuCoin.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
 
 
@@ -175,5 +176,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("Player", score);
        
         PlayerPrefs.SetString("Player1", enterName.text);
+        score = 0;
     }
 }
