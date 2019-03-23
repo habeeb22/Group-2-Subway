@@ -18,6 +18,15 @@ public class ButtonManager : MonoBehaviour
 
     public void ButtonManag()
     {
-
+        if (PlayerPrefs.GetInt("Coins") < 50)
+        {
+            print("not Coins");
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - 50);
+            PlayerPrefs.SetInt("CoinsX2", PlayerPrefs.GetInt("CoinsX2") + 1);
+        }
+       
     }
 }

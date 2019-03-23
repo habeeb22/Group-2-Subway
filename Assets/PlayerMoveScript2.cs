@@ -86,7 +86,18 @@ public class PlayerMoveScript2 : MonoBehaviour
         if (collision.gameObject.tag == "Lose")
         {
 
-            SceneManager.LoadScene("GameOver");
+            if (PlayerPrefs.GetInt("CoinsX2") > 0)
+            {
+                PlayerPrefs.SetInt("CoinsX2", PlayerPrefs.GetInt("CoinsX2") - 1);
+                SceneManager.LoadScene("GameOver");
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOver");
+            }
+
+
+            
 
 
         }
@@ -95,11 +106,26 @@ public class PlayerMoveScript2 : MonoBehaviour
     {
         if (other.tag == "Coin")
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
-            GameManager.coin += 1;
+
+           
+
+            if (PlayerPrefs.GetInt("CoinsX2") > 0)
+            {
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 2);
+                GameManager.coin += 2;
+
+                Destroy(other.gameObject);
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + 1);
+                GameManager.coin += 1;
+
+                Destroy(other.gameObject);
+                AudioSource.PlayClipAtPoint(clip, transform.position);
+            }
             
-            Destroy(other.gameObject);
-            AudioSource.PlayClipAtPoint(clip, transform.position);
         }
     }
 }

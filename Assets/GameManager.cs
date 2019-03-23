@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
 
         if (sceneName == "ManiManu")
         {
+            
             manuCoin = GameObject.FindGameObjectWithTag("ManuCoins").GetComponent<Text>();
             //scoreText = GameObject.FindGameObjectWithTag("ScoreGamPlay").GetComponent<Text>();
             //totalCoinGamplay = GameObject.FindGameObjectWithTag("TotalCoinGamePlay").GetComponent<Text>();
@@ -71,7 +72,7 @@ public class GameManager : MonoBehaviour
 
             //PlayerPrefs.SetInt("Coins", totalCo
             
-            manuCoin.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+            manuCoin.text = "        :  " + PlayerPrefs.GetInt("Coins");
 
 
         }
@@ -80,12 +81,12 @@ public class GameManager : MonoBehaviour
             gamePlayCoinsText = GameObject.FindGameObjectWithTag("CoinGamPlay").GetComponent<Text>();
             scoreText = GameObject.FindGameObjectWithTag("ScoreGamPlay").GetComponent<Text>();
             totalCoinGamplay = GameObject.FindGameObjectWithTag("TotalCoinGamePlay").GetComponent<Text>();
-            gamePlayCoinsText.text = "Coin: " + coin;
+            gamePlayCoinsText.text = "        : " + coin;
             scoreText.text = "score: " + score;
             //totalcoin1 = totalCoin;
            
             //PlayerPrefs.SetInt("Coins", totalCoin);
-            totalCoinGamplay.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+            totalCoinGamplay.text = "       : " + PlayerPrefs.GetInt("Coins");
 
             
         }
@@ -105,7 +106,7 @@ public class GameManager : MonoBehaviour
             mycoins= GameObject.FindGameObjectWithTag("TotalCoins").GetComponent<Text>();
             scoreName.text =  PlayerPrefs.GetString("Player1");
             bestscoreText.text = "Your Score: " + PlayerPrefs.GetInt("Player");
-            mycoins.text = "Coins:  " + PlayerPrefs.GetInt("Coins");
+            mycoins.text = "       :  " + PlayerPrefs.GetInt("Coins");
             // PlayerPrefs.GetInt("Coins", PlayerPrefs.GetInt("Coins")+ totalCoin);
             //scoreName.text = enterName.text;
             //PlayerPrefs.GetInt("Coins", PlayerPrefs.GetInt("Coins") + coin);
