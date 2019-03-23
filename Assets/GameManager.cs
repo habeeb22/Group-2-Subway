@@ -178,5 +178,6 @@ public class GameManager : MonoBehaviour
        
         PlayerPrefs.SetString("Player1", enterName.text);
         score = 0;
+        coin = 0;
     }
 }

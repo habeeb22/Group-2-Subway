@@ -48,11 +48,11 @@ public class PlayerMoveScript2 : MonoBehaviour
         }
         if (ScoreSpeed > 5000 && ScoreSpeed < 9000)
         {
-            moveSpeed = 0.15f;
+            moveSpeed = 0.17f;
         }
         if (ScoreSpeed > 9000)
         {
-            moveSpeed = 0.2f;
+            moveSpeed = 0.26f;
         }
         float moveHorizontal = Input.GetAxis("Horizontal");
 

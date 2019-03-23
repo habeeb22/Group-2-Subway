@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallDestroy : MonoBehaviour
 {
-    float time = 30;
+    float time = 60;
     // Start is called before the first frame update
     void Start()
     {
