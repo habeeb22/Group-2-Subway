@@ -172,7 +172,7 @@ public class GameManager : MonoBehaviour
     //}
     public void SubmitScore()
     {
-        highadder.Addscores(score, enterName.text);
+        //highadder.Addscores(score, enterName.text);
      
         PlayerPrefs.SetInt("Player", score);
        

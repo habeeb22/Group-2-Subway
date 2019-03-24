@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HighscoreTable : MonoBehaviour
+public class HighscoreTable1 : MonoBehaviour
 {
-    public static HighscoreTable Instance;
+    public static HighscoreTable1 Instance;
     public Transform entryContainer;
     public Transform entryTemp;
     //public List<HighscoreEntry> highscoreEntryList;
